@@ -1,1 +1,33 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+}
+
+:root {
+  --text-white: #eeef;
+  --text-black: #111f;
+  --text-error: #ff5555ff;
+
+  --primary: #2dc653ff;
+  --secondary-color: #000f;
+  --form: #14171e9f;
+  --form-input: #14171e40;
+  --form-input-placeholder: #d5d5d5ff;
+  --button-disabled: #86868681;
+
+  --primary-hover: #219b3c;
+
+  --form-valid: #2dc65381;
+  --form-invalid: #ff333381;
+  --form-pending: #ffffff81;
+
+  --box-shadow-dark-soft: #05060e81;
+
+  --nav-height: 55px;
+}

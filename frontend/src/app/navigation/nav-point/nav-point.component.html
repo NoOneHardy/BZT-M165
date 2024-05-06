@@ -1,0 +1,10 @@
+<a [routerLink]="route" class="nav-point"
+   routerLinkActive="active"
+   [routerLinkActiveOptions]="{exact: true}"
+   #rla="routerLinkActive">
+  <span
+    [class]="[rla.isActive ? 'material-icons' : 'material-icons-outlined', 'icon']"
+  >{{ icon }}</span>
+  <span class="name">{{ name }}</span>
+  <span class="hover-line"></span>
+</a>

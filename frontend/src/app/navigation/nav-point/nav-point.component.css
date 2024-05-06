@@ -1,0 +1,38 @@
+:host {
+  height: 100%;
+}
+
+.nav-point {
+  color: var(--text-white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.1em;
+  text-decoration: none;
+  column-gap: 0.05em;
+  height: 100%;
+  background-color: transparent;
+  padding: 10px;
+  transition: background-color 0.2s ease;
+  position: relative;
+}
+
+.hover-line {
+  position: absolute;
+  bottom: 0;
+  display: block;
+  height: 2px;
+  width: 0;
+  background-color: var(--primary);
+  transition: width 0.2s ease;
+  box-shadow: -1px 0 5px var(--primary-hover);
+}
+
+.nav-point:hover {
+  background-color: #fff2;
+}
+
+.nav-point:hover .hover-line,
+.nav-point.active .hover-line {
+  width: 100%;
+}
