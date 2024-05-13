@@ -15,15 +15,8 @@ nav {
   display: flex;
   justify-content: left;
   align-items: center;
-  padding: 0 20px;
+  padding-right: 20px;
   z-index: 1;
-}
-
-nav > #nav-heading {
-  margin-right: 25px;
-  color: var(--primary);
-  font-weight: 700;
-  font-size: 1.4em;
 }
 
 nav > .user-action {

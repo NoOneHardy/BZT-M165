@@ -1,1 +1,5 @@
-<p>product works!</p>
+<ng-container *ngIf="product">
+  <img [ngSrc]="product.image" height="100" width="100" alt>
+  <h3>{{product.name}}</h3>
+  <span>{{product.id}}</span>
+</ng-container>
