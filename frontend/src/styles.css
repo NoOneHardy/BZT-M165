@@ -12,22 +12,25 @@
 :root {
   --text-white: #eeef;
   --text-black: #111f;
-  --text-error: #ff5555ff;
+  --text-error: rgba(255, 0, 0, 0.34);
 
-  --primary: #fd2623ff;
+  --primary: #e023fd;
   --secondary-color: #000f;
   --form: #14171e9f;
   --form-input: #14171e40;
   --form-input-placeholder: #d5d5d5ff;
   --button-disabled: #86868681;
 
-  --primary-hover: #db0401ff;
+  --primary-hover: #bd20d8;
 
   --form-valid: #2dc65381;
   --form-invalid: #ff333381;
   --form-pending: #ffffff81;
 
   --box-shadow-dark-soft: #05060e81;
+
+  --contrast-5: #eee;
+  --contrast-40: #888;
 
   --nav-height: 55px;
 }

@@ -1,6 +1,19 @@
-<p>product-overview works!</p>
-<m165-product [product]="{
-  id: 'anjf8197jibosadf0',
-  image: 'https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fradiusblocks.com%2Fwp-content%2Fuploads%2F2022%2F09%2Fimage-grid_5.jpg&f=1&nofb=1&ipt=08715a85cf108ce4479c5b3b18d1318402073cd074a7ab9aa616d8e353ec0f74&ipo=images',
-  name: 'Computer'
-}"/>
+<m165-search (search)="search($event)"/>
+<div class="products" *ngIf="!error; else errorMessage">
+  <m165-product *ngFor="let product of products" [product]="product" [link]="url + product.id"/>
+</div>
+
+<div class="no-results" *ngIf="!error && products.length == 0">
+  <div class="error-message">
+    <span class="material-icons">sentiment_dissatisfied</span>
+    <h1 *ngIf="searchValue">Keine Produkte zu "{{searchValue}}" gefunden</h1>
+    <h1 *ngIf="!searchValue">Keine Produkte gefunden</h1>
+  </div>
+</div>
+
+<ng-template #errorMessage>
+  <div class="error-message">
+    <span class="material-icons">error</span>
+    <h1>Es ist ein Fehler aufgetreten!</h1>
+  </div>
+</ng-template>

@@ -1,5 +1,7 @@
-<ng-container *ngIf="product">
-  <img [ngSrc]="product.image" height="100" width="100" alt>
+<a *ngIf="product" class="product" [class.with-image]="product['image']" [routerLink]="link">
+  <div class="img-wrapper" *ngIf="product['image']">
+  <img [ngSrc]="product['image']" fill alt>
+  </div>
   <h3>{{product.name}}</h3>
   <span>{{product.id}}</span>
-</ng-container>
+</a>

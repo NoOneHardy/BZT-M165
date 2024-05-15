@@ -15,4 +15,5 @@ export class NavPointComponent {
   @Input() icon?: string
   @Input() route?: string
   @Input() name?: string
+  @Input() absolute: boolean = true
 }

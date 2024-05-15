@@ -1,1 +1,32 @@
-<p>product-form works!</p>
+<h1>{{ title }}</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="form-control" id="name-control">
+    <label for="name">Name *</label>
+    <input type="text" id="name" formControlName="name" autocomplete="off">
+  </div>
+
+  <div class="form-control">
+    <label for="category">Kategorie *</label>
+    <input type="text" id="category" formControlName="category" autocomplete="off">
+  </div>
+
+  <div class="form-control">
+    <label for="price">Preis (CHF) *</label>
+    <input min="0" type="number" id="price" formControlName="price" autocomplete="off">
+  </div>
+
+  <div class="attributes" *ngFor="let a of others.controls; index as i" formArrayName="others">
+    <div class="attribute-form-control" [formGroupName]="i" [class.editable]="!product || edit">
+      <label for="key" *ngIf="!key.value">Name</label>
+      <input min="0" type="text" id="key" formControlName="key" #key autocomplete="off">
+
+      <label for="value" *ngIf="!value.value">Wert</label>
+      <input min="0" type="text" id="value" formControlName="value" #value autocomplete="off">
+    </div>
+  </div>
+
+  <div class="buttons">
+    <button *ngIf="!product || edit" type="button" (click)="addAttribute()">Attribut hinzufügen</button>
+    <button *ngIf="!product || edit" type="submit">Speichern</button>
+  </div>
+</form>

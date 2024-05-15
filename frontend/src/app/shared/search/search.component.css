@@ -1,0 +1,33 @@
+.wrapper {
+  position: relative;
+
+  &:focus-within .material-icons {
+    color: var(--primary);
+  }
+
+  span.material-icons {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: .5em;
+    font-size: 2em;
+    line-height: 100%;
+    color: var(--contrast-40);
+    transition: color .2s ease;
+  }
+
+  input {
+    padding: .75em .8em;
+    width: 25em;
+    background-color: var(--contrast-5);
+    font-size: 1.25em;
+    font-weight: bold;
+    outline: none;
+    transition: box-shadow .2s ease;
+    border-radius: .5em;
+
+    &:focus {
+      box-shadow: 0 0 .5em var(--box-shadow-dark-soft);
+    }
+  }
+}
