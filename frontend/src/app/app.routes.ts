@@ -1,20 +1,24 @@
 import { Routes } from '@angular/router';
 import {ProductOverviewComponent} from "./product-overview/product-overview.component";
-import {ProductFormComponent} from "./product-form/product-form.component";
+import {NewProductComponent} from './new-product/new-product.component'
 import {authGuard} from "./shared/auth.guard";
-import {ViewComponent} from './view/view.component'
 import {EditOverviewComponent} from './edit-overview/edit-overview.component'
-import {EditComponent} from './edit/edit.component'
+import {EditComponent} from './edit-overview/edit/edit.component'
+import {ProductDetailsComponent} from './product-overview/product-details/product-details.component'
 
 export const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
+    redirectTo: 'view'
+  },
+  {
+    path: 'view',
     component: ProductOverviewComponent
   },
   {
     path: 'create',
-    component: ProductFormComponent,
+    component: NewProductComponent,
     // canActivate: [authGuard]
   },
   {
@@ -28,7 +32,7 @@ export const routes: Routes = [
     // canActivate: [authGuard]
   },
   {
-    path: 'view/:id',
-    component: ViewComponent
+    path: 'detail/:id',
+    component: ProductDetailsComponent
   }
 ];

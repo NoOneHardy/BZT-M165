@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {NgIf, NgOptimizedImage} from "@angular/common";
-import {Product} from '../shared/interfaces/product'
+import {Product} from '../../interfaces/product'
 import {RouterLink} from '@angular/router'
 
 @Component({

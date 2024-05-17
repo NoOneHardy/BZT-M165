@@ -1,19 +1,3 @@
-<m165-search (search)="search($event)"/>
-<div class="products" *ngIf="!error; else errorMessage">
-  <m165-product *ngFor="let product of products" [product]="product" [link]="url + product.id"/>
-</div>
-
-<div class="no-results" *ngIf="!error && products.length == 0">
-  <div class="error-message">
-    <span class="material-icons">sentiment_dissatisfied</span>
-    <h1 *ngIf="searchValue">Keine Produkte zu "{{searchValue}}" gefunden</h1>
-    <h1 *ngIf="!searchValue">Keine Produkte gefunden</h1>
-  </div>
-</div>
-
-<ng-template #errorMessage>
-  <div class="error-message">
-    <span class="material-icons">error</span>
-    <h1>Es ist ein Fehler aufgetreten!</h1>
-  </div>
-</ng-template>
+<m165-content>
+  <m165-product-view url="/detail"/>
+</m165-content>

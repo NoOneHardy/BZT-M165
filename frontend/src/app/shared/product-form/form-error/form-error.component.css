@@ -1,0 +1,7 @@
+:host /deep/ {
+  font-size: .75em;
+
+  p {
+    color: var(--text-error);
+  }
+}

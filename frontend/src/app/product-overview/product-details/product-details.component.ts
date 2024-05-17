@@ -1,22 +1,20 @@
-import {Component, inject} from '@angular/core';
-import {ProductFormComponent} from '../product-form/product-form.component'
+import {Component, inject, OnInit} from '@angular/core';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router'
-import {ProductService} from '../shared/product.service'
-import {Product} from '../shared/interfaces/product'
+import {Product} from '../../shared/interfaces/product'
 import {NgIf} from '@angular/common'
+import {ProductService} from '../../shared/product.service'
 
 @Component({
-  selector: 'm165-edit',
+  selector: 'm165-details',
   standalone: true,
   imports: [
-    ProductFormComponent,
     NgIf,
     RouterLink
   ],
-  templateUrl: './edit.component.html',
-  styleUrl: './edit.component.css'
+  templateUrl: './product-details.component.html',
+  styleUrl: './product-details.component.css'
 })
-export class EditComponent {
+export class ProductDetailsComponent implements OnInit {
   private activatedRoute = inject(ActivatedRoute)
   private router = inject(Router)
   private productService = inject(ProductService)

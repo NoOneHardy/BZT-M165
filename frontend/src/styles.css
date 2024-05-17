@@ -12,7 +12,7 @@
 :root {
   --text-white: #eeef;
   --text-black: #111f;
-  --text-error: rgba(255, 0, 0, 0.34);
+  --text-error: #9a0000;
 
   --primary: #e023fd;
   --secondary-color: #000f;
@@ -24,7 +24,7 @@
   --primary-hover: #bd20d8;
 
   --form-valid: #2dc65381;
-  --form-invalid: #ff333381;
+  --form-invalid: #FF000026;
   --form-pending: #ffffff81;
 
   --box-shadow-dark-soft: #05060e81;

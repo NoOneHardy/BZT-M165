@@ -1,0 +1,43 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <m165-form-field id="name-control">
+    <label for="name">Name*</label>
+    <input type="text" id="name" formControlName="name">
+    <m165-form-error *ngIf="showError('name', 'required')">Pflichtfeld</m165-form-error>
+  </m165-form-field>
+
+  <m165-form-field>
+    <label for="category">Kategorie*</label>
+    <input type="text" id="category" formControlName="category">
+    <m165-form-error *ngIf="showError('category', 'required')">Pflichtfeld</m165-form-error>
+  </m165-form-field>
+
+  <m165-form-field>
+    <label for="price">Preis (CHF)*</label>
+    <input min="0" type="number" id="price" formControlName="price">
+    <m165-form-error *ngIf="showError('price', 'required')">Pflichtfeld</m165-form-error>
+    <m165-form-error *ngIf="showError('price', 'min')">Der Preis muss mindestens CHF 0.00 sein</m165-form-error>
+  </m165-form-field>
+
+  <ng-container *ngFor="let a of others.controls; index as i" formArrayName="others">
+    <m165-attribute-form-field [formGroupName]="i">
+      <m165-form-field>
+        <label [for]="'key' + i">Name</label>
+        <input min="0" type="text" [id]="'key' + i" formControlName="key">
+      </m165-form-field>
+
+      <m165-form-field>
+        <label [for]="'value' + i">Wert</label>
+        <input min="0" type="text" [id]="'value' + i" formControlName="value">
+      </m165-form-field>
+
+      <button type="button" (click)="remove(i)">
+        <span class="material-icons">delete</span>
+      </button>
+    </m165-attribute-form-field>
+  </ng-container>
+
+  <div class="buttons">
+    <button type="button" (click)="addAttribute()">Attribut hinzufügen</button>
+    <button type="submit">Speichern</button>
+  </div>
+</form>

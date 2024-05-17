@@ -4,7 +4,6 @@
   height: 25em;
   background-color: var(--contrast-5);
   padding: 1.5em 1.75em;
-  border-radius: 1em;
   box-shadow: 0 0 .5em var(--box-shadow-dark-soft);
   cursor: pointer;
   color: var(--text-black);

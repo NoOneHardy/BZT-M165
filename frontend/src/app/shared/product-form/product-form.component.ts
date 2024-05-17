@@ -1,7 +1,11 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms'
-import {Product} from '../shared/interfaces/product'
+import {Product} from '../interfaces/product'
 import {NgForOf, NgIf} from '@angular/common'
+import {ContentComponent} from '../content/content.component'
+import {FormFieldComponent} from './form-field/form-field.component'
+import {FormErrorComponent} from './form-error/form-error.component'
+import {AttributeFormFieldComponent} from './attribute-form-field/attribute-form-field.component'
 
 @Component({
   selector: 'm165-product-form',
@@ -9,15 +13,18 @@ import {NgForOf, NgIf} from '@angular/common'
   imports: [
     ReactiveFormsModule,
     NgIf,
-    NgForOf
+    NgForOf,
+    ContentComponent,
+    FormFieldComponent,
+    FormErrorComponent,
+    AttributeFormFieldComponent
   ],
   templateUrl: './product-form.component.html',
   styleUrl: './product-form.component.css'
 })
 export class ProductFormComponent implements OnInit {
   @Input() product?: Product
-  @Input() title = 'Neues Produkt'
-  @Input() edit = false
+  @Input() title = ''
 
   form = new FormGroup({
     name: new FormControl<string>('', {
@@ -26,13 +33,13 @@ export class ProductFormComponent implements OnInit {
         Validators.required,
       ]
     }),
-    category: new FormControl<string>({value: '', disabled: !this.edit && this.product != undefined}, {
+    category: new FormControl<string>('', {
       nonNullable: true,
       validators: [
         Validators.required,
       ]
     }),
-    price: new FormControl<number>({value: 0, disabled: !this.edit && this.product != undefined}, {
+    price: new FormControl<number | null>(null, {
       nonNullable: true,
       validators: [
         Validators.required,
@@ -47,11 +54,11 @@ export class ProductFormComponent implements OnInit {
 
   addAttribute(key?: string, value?: string | number) {
     this.others.push(new FormGroup({
-      key: new FormControl<string>({value: key ? key : '', disabled: !this.edit && this.product != undefined}, {
+      key: new FormControl<string>(key ? key : '', {
         nonNullable: true,
         validators: []
       }),
-      value: new FormControl<string | number>({value: value ? value : '', disabled: !this.edit && this.product != undefined}, {
+      value: new FormControl<string | number>(value ? value : '', {
         nonNullable: true,
         validators: []
       })
@@ -64,15 +71,11 @@ export class ProductFormComponent implements OnInit {
     if (this.form.invalid) return
 
     console.log(this.form.getRawValue())
+    this.form.reset()
   }
 
   ngOnInit() {
     if (this.product) {
-      if (!this.edit) {
-        this.form.controls.name.disable()
-        this.form.controls.category.disable()
-        this.form.controls.price.disable()
-      }
       this.form.controls.name.setValue(this.product.name)
       this.form.controls.category.setValue(this.product.category)
       this.form.controls.price.setValue(this.product.price)
@@ -83,5 +86,16 @@ export class ProductFormComponent implements OnInit {
         }
       }
     }
+  }
+
+  showError(controlName: string, error: string): boolean {
+    const control = this.form.get(controlName)
+    if (!control) return false
+    if (control.untouched) return false
+    return control.errors && control.errors[error]
+  }
+
+  remove(id: number) {
+    this.form.controls.others.removeAt(id)
   }
 }

@@ -1,0 +1,25 @@
+<div class="results" *ngIf="!loading; else loader">
+  <div class="products" *ngIf="!error; else errorMessage">
+    <div class="product-list" *ngIf="products.length !== 0; else noResults">
+      <m165-product *ngFor="let product of products" [product]="product" [link]="url + '/' + product.id"/>
+    </div>
+
+    <ng-template class="no-results" #noResults>
+      <div class="error-message">
+        <span class="material-icons">sentiment_dissatisfied</span>
+        <h1 *ngIf="searchValue">Keine Produkte zu "{{ searchValue }}" gefunden</h1>
+        <h1 *ngIf="!searchValue">Keine Produkte gefunden</h1>
+      </div>
+    </ng-template>
+  </div>
+
+  <ng-template #errorMessage>
+    <div class="error-message">
+      <span class="material-icons">error</span>
+      <h1>Es ist ein Fehler aufgetreten!</h1>
+    </div>
+  </ng-template>
+</div>
+<ng-template #loader>
+  <m165-loader *ngIf="loading"/>
+</ng-template>

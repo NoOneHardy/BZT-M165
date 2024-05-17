@@ -28,11 +28,9 @@ nav > .user-action {
   align-items: center;
   padding: 0 20px;
   height: 35px;
-  background-color: var(--primary);
-  border-radius: calc(35px / 2);
+  color: var(--primary);
+  background-color: transparent;
   font-weight: bold;
-  box-shadow: 0 0 10px #000;
-  color: var(--text-black);
   text-decoration: none;
   transition: transform 0.25s ease-in-out;
 }
