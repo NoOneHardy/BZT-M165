@@ -23,7 +23,7 @@
     transition: top .2s ease, font-size .2s ease, color .2s ease;
   }
 
-  input {
+  input, textarea {
     width: 100%;
     background-color: var(--contrast-5);
     padding: .75em 1em;
@@ -32,6 +32,9 @@
     outline: none;
     font-weight: 600;
     transition: background-color .2s ease, border-bottom-width .1s ease;
+    height: fit-content;
+    resize: none;
+    align-content: center;
 
     &.ng-invalid.ng-touched {
       background-color: var(--form-invalid);

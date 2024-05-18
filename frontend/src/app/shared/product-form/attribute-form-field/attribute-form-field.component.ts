@@ -8,5 +8,4 @@ import { Component } from '@angular/core';
   styleUrl: './attribute-form-field.component.css'
 })
 export class AttributeFormFieldComponent {
-
 }

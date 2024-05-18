@@ -4,7 +4,9 @@
     "routes": [
       "products:ok",
       "product:ok",
-      "search:ok"
+      "search:ok",
+      "create:ok",
+      "edit:ok"
     ]
   },
   {

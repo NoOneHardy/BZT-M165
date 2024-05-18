@@ -3,13 +3,17 @@ import {ActivatedRoute, Router, RouterLink} from '@angular/router'
 import {Product} from '../../shared/interfaces/product'
 import {NgIf} from '@angular/common'
 import {ProductService} from '../../shared/product.service'
+import {ContentComponent} from '../../shared/content/content.component'
+import {ProductFormComponent} from '../../shared/product-form/product-form.component'
 
 @Component({
   selector: 'm165-details',
   standalone: true,
   imports: [
     NgIf,
-    RouterLink
+    RouterLink,
+    ContentComponent,
+    ProductFormComponent
   ],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.css'

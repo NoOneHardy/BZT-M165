@@ -1,4 +1,11 @@
-<a routerLink="/">
-  <span class="material-icons">arrow_back</span>
-  <span>Zurück zur Übersicht</span>
-</a>
+<m165-content>
+  <a routerLink="/">
+    <span class="material-icons">arrow_back</span>
+    <span>Zurück zur Übersicht</span>
+  </a>
+
+  <h1>Produktdetails</h1>
+
+  <m165-product-form *ngIf="product" [product]="product" [disabled]="true"/>
+
+</m165-content>

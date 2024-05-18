@@ -200,7 +200,7 @@ module.exports = [
                 type: 'json',
                 options: {
                     status: 200,
-                    body: products[0]
+                    body: products[Math.round(Math.random() * (products.length - 1))]
                 }
             }
         ]
@@ -232,6 +232,36 @@ module.exports = [
                 options: {
                     status: 500,
                     body: ''
+                }
+            }
+        ]
+    },
+    {
+        id: 'create',
+        method: 'POST',
+        url: '/api/products',
+        variants: [
+            {
+                id: 'ok',
+                type: 'json',
+                options: {
+                    status: 200,
+                    body: products[0]
+                }
+            }
+        ]
+    },
+    {
+        id: 'edit',
+        method: 'POST',
+        url: '/api/products?:id',
+        variants: [
+            {
+                id: 'ok',
+                type: 'json',
+                options: {
+                    status: 200,
+                    body: products[1]
                 }
             }
         ]

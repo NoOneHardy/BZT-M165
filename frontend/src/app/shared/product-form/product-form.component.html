@@ -19,24 +19,33 @@
   </m165-form-field>
 
   <ng-container *ngFor="let a of others.controls; index as i" formArrayName="others">
-    <m165-attribute-form-field [formGroupName]="i">
+    <m165-attribute-form-field [formGroupName]="i" [class.disabled]="disabled">
       <m165-form-field>
-        <label [for]="'key' + i">Name</label>
-        <input min="0" type="text" [id]="'key' + i" formControlName="key">
+        <label [for]="'key' + i" *ngIf="!disabled">Name</label>
+        <input type="text" [id]="'key' + i" formControlName="key" #key>
+        <m165-form-error *ngIf="showAttributeError(i, 'key', 'unique_key')">Dieser Name wird bereits benutzt.
+        </m165-form-error>
+        <m165-form-error *ngIf="showAttributeError(i, 'key', 'reserved_key')">
+          "{{ key.value }}" ist ein reservierter Bezeichner.
+        </m165-form-error>
       </m165-form-field>
 
-      <m165-form-field>
+      <m165-form-field *ngIf="!disabled">
         <label [for]="'value' + i">Wert</label>
-        <input min="0" type="text" [id]="'value' + i" formControlName="value">
+        <input type="text" [id]="'value' + i" formControlName="value">
+      </m165-form-field>
+      <m165-form-field *ngIf="disabled">
+        <textarea *ngIf="others.controls[i].controls.value.value.length >= 45"  [id]="'value' + i" formControlName="value"></textarea>
+        <input *ngIf="others.controls[i].controls.value.value.length < 45" type="text" [id]="'value' + i" formControlName="value">
       </m165-form-field>
 
-      <button type="button" (click)="remove(i)">
+      <button type="button" (click)="remove(i)" *ngIf="!disabled">
         <span class="material-icons">delete</span>
       </button>
     </m165-attribute-form-field>
   </ng-container>
 
-  <div class="buttons">
+  <div class="buttons" *ngIf="!disabled">
     <button type="button" (click)="addAttribute()">Attribut hinzufügen</button>
     <button type="submit">Speichern</button>
   </div>

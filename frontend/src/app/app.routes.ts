@@ -32,7 +32,7 @@ export const routes: Routes = [
     // canActivate: [authGuard]
   },
   {
-    path: 'detail/:id',
+    path: 'view/:id',
     component: ProductDetailsComponent
   }
 ];

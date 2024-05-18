@@ -1,11 +1,15 @@
 :host /deep/ {
   display: flex;
   flex-direction: row;
-  align-items: center;
   width: 100%;
+  height: fit-content;
+
+  &.disabled m165-form-field {
+    width: 50%;
+  }
 
   m165-form-field {
-    width: 45%
+    width: 45%;
   }
 
   button {
@@ -18,6 +22,7 @@
     line-height: 1em;
     padding: .6em .8em;
     cursor: pointer;
+    height: fit-content;
 
     span {
       font-size: 1em;
