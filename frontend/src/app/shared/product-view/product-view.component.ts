@@ -17,6 +17,7 @@ import {ProductListComponent} from '../product-list/product-list.component'
 })
 export class ProductViewComponent implements OnInit, OnDestroy {
   @Input() url: string = ''
+  @Input() title: string = ''
 
   private productsService = inject(ProductService)
   private productController: Controller = {

@@ -51,6 +51,13 @@ export class ProductFormComponent implements OnInit {
         Validators.required,
       ]
     }),
+    image: new FormControl<string>('', {
+      nonNullable: true,
+      validators: [
+        Validators.required,
+        Validators.pattern(/http(s)?:\/\/.+\..+/)
+      ]
+    }),
     others: new FormArray<FormGroup<{ key: FormControl<string>, value: FormControl<string> }>>([])
   })
 
@@ -83,7 +90,8 @@ export class ProductFormComponent implements OnInit {
       id: this.product ? this.product.id : '',
       name: formValue.name,
       category: formValue.category,
-      price: formValue.price
+      price: formValue.price,
+      image: formValue.image
     }
 
     for (const attribute of formValue.others) {

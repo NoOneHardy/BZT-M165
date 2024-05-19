@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {NgIf, NgOptimizedImage} from "@angular/common";
+import {DecimalPipe, NgIf, NgOptimizedImage} from "@angular/common";
 import {Product} from '../../interfaces/product'
 import {RouterLink} from '@angular/router'
 
@@ -9,7 +9,8 @@ import {RouterLink} from '@angular/router'
   imports: [
     NgIf,
     NgOptimizedImage,
-    RouterLink
+    RouterLink,
+    DecimalPipe
   ],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css'
@@ -17,4 +18,5 @@ import {RouterLink} from '@angular/router'
 export class ProductComponent {
   @Input() product?: Product
   @Input() link: string = ''
+  @Input() title: string = ''
 }

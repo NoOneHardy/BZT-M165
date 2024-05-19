@@ -19,6 +19,7 @@ import {ProductComponent} from './product/product.component'
 export class ProductListComponent {
   @Input() products: Product[] = []
   @Input() url = ''
+  @Input() title = ''
   @Input() searchValue?: string
   @Input() error = false
   @Input() loading = false

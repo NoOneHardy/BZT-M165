@@ -1,5 +1,5 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <m165-form-field id="name-control">
+  <m165-form-field>
     <label for="name">Name*</label>
     <input type="text" id="name" formControlName="name">
     <m165-form-error *ngIf="showError('name', 'required')">Pflichtfeld</m165-form-error>
@@ -16,6 +16,13 @@
     <input min="0" type="number" id="price" formControlName="price">
     <m165-form-error *ngIf="showError('price', 'required')">Pflichtfeld</m165-form-error>
     <m165-form-error *ngIf="showError('price', 'min')">Der Preis muss mindestens CHF 0.00 sein</m165-form-error>
+  </m165-form-field>
+
+  <m165-form-field>
+    <label for="image">Vorschau-Bild URL</label>
+    <input type="url" id="image" formControlName="image">
+    <m165-form-error *ngIf="showError('image', 'required')">Pflichtfeld</m165-form-error>
+    <m165-form-error *ngIf="showError('image', 'pattern')">Bitte geben Sie eine gültige URL ein</m165-form-error>
   </m165-form-field>
 
   <ng-container *ngFor="let a of others.controls; index as i" formArrayName="others">
