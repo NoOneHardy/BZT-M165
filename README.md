@@ -1,6 +1,7 @@
 # BZT-M165
  
-* POST '/create' => Erstelltes Objekt
-* POST '/edit/<id>' => Bearbeitetes Objekt
-* GET '' => Array mit allen Objekten
-* GET '/<id>' => Objekt
+* POST '/products' => Erstelltes Objekt
+* POST '/prodcuts/<id>' => Bearbeitetes Objekt
+* GET '/products' => Array mit allen Objekten
+* GET '/products/<id>' => Bestimmtes Objekt
+* GET '/search?query=<query>' => Suche nach Text
