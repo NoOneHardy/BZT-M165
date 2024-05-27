@@ -136,7 +136,7 @@ export class ProductFormComponent implements OnInit {
       this.form.controls.image.setValue(this.product.image)
 
       for (const key of Object.keys(this.product)) {
-        if (!['_id', 'name', 'category', 'price', 'image'].includes(key)) {
+        if (!['_id', 'name', 'category', 'price', 'image', '_rev'].includes(key)) {
           this.addAttribute(key, this.product[key].toString())
         }
       }

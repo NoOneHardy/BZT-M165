@@ -27,8 +27,9 @@ class ConnectDB():
     def createObject(self,data):
         db = self.server['demo']
 
-        db.save(data)
-        print(data)
+        id,rev = db.save(data)
+        return db.get(id)
+    
 
     def updateObject(self,id,data):
         db = self.server['demo']
@@ -43,6 +44,12 @@ class ConnectDB():
 
     def textQueryObject(self,queryText):
         db = self.server['demo']
+
+    def deleteObject(self,id):
+        db = self.server['demo']
+        doc = db.get(id)
+        db.delete(doc)
+        return doc
 
         
 

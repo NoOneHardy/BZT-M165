@@ -18,7 +18,7 @@ export function uniqueKey(array: FormArray<FormGroup<{
 }
 
 export const reservedKeys: ValidatorFn = (control) => {
-  const keys = ['_id', 'name', 'category', 'price']
+  const keys = ['_id', 'name', 'category', 'price', '_rev']
 
   if (!isFormControl(control)) return null
   if (keys.includes(control.value.toLowerCase())) return {reserved_key: true, key: control.value}

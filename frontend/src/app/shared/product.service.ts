@@ -6,7 +6,7 @@ import {NewProduct, Product} from './interfaces/product'
   providedIn: 'root'
 })
 export class ProductService {
-  private apiUrl = 'http://localhost:3100/api'
+  private apiUrl = 'http://localhost:12345'
 
   private http = inject(HttpClient)
 
@@ -15,7 +15,7 @@ export class ProductService {
   }
 
   get(id: string) {
-    return this.http.get<Product>(`${this.apiUrl}/product/${id}`)
+    return this.http.get<Product>(`${this.apiUrl}/products/${id}`)
   }
 
   search(q: string) {
