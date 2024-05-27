@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core'
 import {HttpClient} from '@angular/common/http'
-import {Product} from './interfaces/product'
+import {NewProduct, Product} from './interfaces/product'
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +22,7 @@ export class ProductService {
     return this.http.get<Product[]>(`${this.apiUrl}/search?query=${q}`)
   }
 
-  create(p: Product) {
+  create(p: NewProduct) {
     return this.http.post<Product>(`${this.apiUrl}/products`, p)
   }
 

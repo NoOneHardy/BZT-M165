@@ -1,6 +1,6 @@
 import {Component, inject, Input, OnInit} from '@angular/core';
 import {FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms'
-import {Product} from '../interfaces/product'
+import {NewProduct, Product} from '../interfaces/product'
 import {NgForOf, NgIf} from '@angular/common'
 import {ContentComponent} from '../content/content.component'
 import {FormFieldComponent} from './form-field/form-field.component'
@@ -86,24 +86,41 @@ export class ProductFormComponent implements OnInit {
     if (this.form.invalid) return
 
     const formValue = this.form.getRawValue()
-    const product: Product = {
-      id: this.product ? this.product.id : '',
-      name: formValue.name,
-      category: formValue.category,
-      price: formValue.price,
-      image: formValue.image
-    }
 
-    for (const attribute of formValue.others) {
-      if (attribute.key === '' || attribute.value === '') continue
-
-      product[attribute.key] = attribute.value
-    }
+    let product: Product | undefined
+    let newProduct: NewProduct | undefined
 
     if (this.product) {
-      this.productService.edit(this.product.id, product).subscribe(() => this.handleRequest('edit'))
+      product = {
+        _id: this.product._id,
+        name: formValue.name,
+        category: formValue.category,
+        price: formValue.price,
+        image: formValue.image
+      }
+
+      for (const attribute of formValue.others) {
+        if (attribute.key === '' || attribute.value === '') continue
+
+        product[attribute.key] = attribute.value
+      }
+
+      this.productService.edit(this.product._id, product).subscribe(() => this.handleRequest('edit'))
     } else {
-      this.productService.create(product).subscribe(() => this.handleRequest('view'))
+      newProduct = {
+        name: formValue.name,
+        category: formValue.category,
+        price: formValue.price,
+        image: formValue.image
+      }
+
+      for (const attribute of formValue.others) {
+        if (attribute.key === '' || attribute.value === '') continue
+
+        newProduct[attribute.key] = attribute.value
+      }
+
+      this.productService.create(newProduct).subscribe(() => this.handleRequest('view'))
     }
   }
 
