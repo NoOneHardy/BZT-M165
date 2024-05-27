@@ -1,0 +1,59 @@
+:host /deep/ {
+  display: flex;
+  flex-direction: column;
+  padding: .5em;
+  position: relative;
+  margin-bottom: .5em;
+
+  &:focus-within, &:has(input:not(:placeholder-shown)) {
+    label {
+      top: 0;
+      font-size: .75em;
+    }
+  }
+
+  &:has(input.ng-invalid.ng-touched) label {
+    color: #810000;
+  }
+
+  label {
+    position: absolute;
+    top: 1.25em;
+    left: 1.5em;
+    transition: top .2s ease, font-size .2s ease, color .2s ease;
+  }
+
+  input, textarea {
+    width: 100%;
+    background-color: var(--contrast-5);
+    padding: .75em 1em;
+    font-size: 1em;
+    line-height: 1.25em;
+    outline: none;
+    font-weight: 600;
+    transition: background-color .2s ease, border-bottom-width .1s ease;
+    height: fit-content;
+    resize: none;
+    align-content: center;
+
+    &.ng-invalid.ng-touched {
+      background-color: var(--form-invalid);
+      border-bottom: .2em solid var(--text-error);
+    }
+
+    &[type="number"] {
+      -moz-appearance: textfield;
+    }
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+
+  m165-form-error {
+    margin-top: .25em;
+    margin-left: 1.5em;
+  }
+}

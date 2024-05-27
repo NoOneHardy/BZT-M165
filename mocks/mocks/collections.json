@@ -1,0 +1,26 @@
+[
+  {
+    "id": "base",
+    "routes": [
+      "products:ok",
+      "product:ok",
+      "search:ok",
+      "create:ok",
+      "edit:ok"
+    ]
+  },
+  {
+    "id": "internal-error",
+    "routes": [
+      "products:internal-error",
+      "search:internal-error"
+    ]
+  },
+  {
+    "id": "no-results",
+    "routes": [
+      "products:no-results",
+      "search:no-results"
+    ]
+  }
+]

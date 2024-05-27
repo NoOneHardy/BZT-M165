@@ -1,0 +1,17 @@
+<a *ngIf="product" class="product" [routerLink]="link">
+  <div class="img-wrapper">
+    <img [ngSrc]="product.image" fill alt="Bild konnte nicht gefunden werden" *ngIf="product.image; else notFound">
+    <ng-template #notFound>
+      <img ngSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Achtung.svg/220px-Achtung.svg.png"
+           fill alt style="object-fit: contain">
+    </ng-template>
+  </div>
+  <div class="content">
+    <h3>{{ product.name }}</h3>
+    <div class="category">
+      {{ product.category }}
+    </div>
+    <span class="price">CHF {{ product.price | number:'0.2-2' }}</span>
+    <a [routerLink]="link" class="link">{{ title }}</a>
+  </div>
+</a>

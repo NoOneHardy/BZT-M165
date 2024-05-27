@@ -1,0 +1,6 @@
+<div class="wrapper">
+  <label for="input">
+    <span class="material-icons" *ngIf="inputElement.value === ''">search</span>
+  </label>
+  <input type="text" id="input" #inputElement (input)="input$.next(inputElement.value)">
+</div>

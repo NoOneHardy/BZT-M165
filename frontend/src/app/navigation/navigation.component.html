@@ -1,0 +1,24 @@
+<nav>
+  <m165-nav-point
+    route="/view"
+    icon="home"
+    name="Übersicht"
+    [absolute]="false"
+  />
+  <m165-nav-point
+    route="/create"
+    icon="add_circle"
+    name="Neues Produkt"
+    *ngIf="isAdmin"
+  />
+  <m165-nav-point
+    route="/edit"
+    icon="edit"
+    name="Produkte bearbeiten"
+    [absolute]="false"
+    *ngIf="isAdmin"
+  />
+
+  <button *ngIf="!isAdmin" (click)="login()" class="user-action">Login</button>
+  <button *ngIf="isAdmin" (click)="logout()" class="user-action">Logout</button>
+</nav>

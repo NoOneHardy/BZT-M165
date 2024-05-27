@@ -1,0 +1,32 @@
+:host /deep/ {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: fit-content;
+
+  &.disabled m165-form-field {
+    width: 50%;
+  }
+
+  m165-form-field {
+    width: 45%;
+  }
+
+  button {
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: .4em .4em .8em;
+    font-size: 1.25em;
+    line-height: 1em;
+    padding: .6em .8em;
+    cursor: pointer;
+    height: fit-content;
+
+    span {
+      font-size: 1em;
+      color: #f00;
+    }
+  }
+}
