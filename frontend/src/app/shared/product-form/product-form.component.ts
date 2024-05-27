@@ -133,9 +133,10 @@ export class ProductFormComponent implements OnInit {
       this.form.controls.name.setValue(this.product.name)
       this.form.controls.category.setValue(this.product.category)
       this.form.controls.price.setValue(this.product.price)
+      this.form.controls.image.setValue(this.product.image)
 
       for (const key of Object.keys(this.product)) {
-        if (!['id', 'name', 'category', 'price', 'image'].includes(key)) {
+        if (!['_id', 'name', 'category', 'price', 'image'].includes(key)) {
           this.addAttribute(key, this.product[key].toString())
         }
       }
@@ -144,6 +145,7 @@ export class ProductFormComponent implements OnInit {
         this.form.controls.name.disable()
         this.form.controls.category.disable()
         this.form.controls.price.disable()
+        this.form.controls.image.disable()
       }
     }
   }
@@ -164,5 +166,11 @@ export class ProductFormComponent implements OnInit {
 
   remove(id: number) {
     this.form.controls.others.removeAt(id)
+  }
+
+  delete() {
+    if (this.product) this.productService.delete(this.product._id).subscribe(() => {
+      this.handleRequest('edit')
+    })
   }
 }

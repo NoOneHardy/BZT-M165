@@ -55,5 +55,6 @@
   <div class="buttons" *ngIf="!disabled">
     <button type="button" (click)="addAttribute()">Attribut hinzufügen</button>
     <button type="submit">Speichern</button>
+    <button type="button" (click)="delete()" *ngIf="product" id="delete">Löschen</button>
   </div>
 </form>

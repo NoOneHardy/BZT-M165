@@ -34,6 +34,14 @@ form {
       &:active {
         box-shadow: 0 0 1em var(--box-shadow-dark-soft);
       }
+
+      &#delete {
+        background-color: var(--warning);
+
+        &:hover {
+          background-color: var(--warning-20);
+        }
+      }
     }
   }
 }

@@ -1,6 +1,6 @@
 const products = [
         {
-            id: 1,
+            _id: 1,
             name: "Smartphone X",
             category: "Electronics",
             price: 499.99,
@@ -11,7 +11,7 @@ const products = [
             image: "https://www.dataselect.com/wp-content/uploads/2023/08/Smartphone-Specifications-Explained-2.webp"
         },
         {
-            id: 2,
+            _id: 2,
             name: "Organic Cotton T-Shirt",
             category: "Fashion",
             price: 19.99,
@@ -22,7 +22,7 @@ const products = [
             image: "https://miro.medium.com/v2/resize:fit:1400/1*KuGlXZjyTw7q38uzY_aZRA.png"
         },
         {
-            id: 3,
+            _id: 3,
             name: "Running Shoes",
             category: "Sports",
             price: 99.99,
@@ -33,7 +33,7 @@ const products = [
             image: "https://miro.medium.com/v2/resize:fit:1400/1*KuGlXZjyTw7q38uzY_aZRA.png"
         },
         {
-            id: 4,
+            _id: 4,
             name: "Stainless Steel Water Bottle",
             category: "Home & Kitchen",
             price: 24.99,
@@ -44,7 +44,7 @@ const products = [
             image: "https://miro.medium.com/v2/resize:fit:1400/1*KuGlXZjyTw7q38uzY_aZRA.png"
         },
         {
-            id: 5,
+            _id: 5,
             name: "Graphic Design Book",
             category: "Books",
             price: 29.99,
@@ -55,7 +55,7 @@ const products = [
             image: "https://miro.medium.com/v2/resize:fit:1400/1*KuGlXZjyTw7q38uzY_aZRA.png"
         },
         {
-            id: 6,
+            _id: 6,
             name: "Gaming Mouse",
             category: "Gaming",
             price: 59.99,
@@ -66,7 +66,7 @@ const products = [
             image: "https://miro.medium.com/v2/resize:fit:1400/1*KuGlXZjyTw7q38uzY_aZRA.png"
         },
         {
-            id: 7,
+            _id: 7,
             name: "Yoga Mat",
             category: "Sports",
             price: 29.99,
@@ -76,7 +76,7 @@ const products = [
             material: "Eco-friendly TPE"
         },
         {
-            id: 8,
+            _id: 8,
             name: "Electric Kettle",
             category: "Home & Kitchen",
             price: 39.99,
@@ -86,7 +86,7 @@ const products = [
             color: "Black"
         },
         {
-            id: 9,
+            _id: 9,
             name: "Gaming Keyboard",
             category: "Gaming",
             price: 79.99,
@@ -96,7 +96,7 @@ const products = [
             layout: "Full-size"
         },
         {
-            id: 10,
+            _id: 10,
             name: "Fiction Novel",
             category: "Books",
             price: 14.99,
@@ -106,7 +106,7 @@ const products = [
             language: "English"
         },
         {
-            id: 11,
+            _id: 11,
             name: "Gaming Headset",
             category: "Gaming",
             price: 99.99,
@@ -116,7 +116,7 @@ const products = [
             wireless: true
         },
         {
-            id: 12,
+            _id: 12,
             name: "Wireless Headphones",
             category: "Electronics",
             price: 79.99,
@@ -126,7 +126,7 @@ const products = [
             connectivity: "Bluetooth"
         },
         {
-            id: 13,
+            _id: 13,
             name: "Leather Wallet",
             category: "Fashion",
             price: 49.99,
@@ -135,7 +135,7 @@ const products = [
             material: "Genuine leather"
         },
         {
-            id: 14,
+            _id: 14,
             name: "Laptop Pro",
             category: "Electronics",
             price: 1299.99,
@@ -146,7 +146,7 @@ const products = [
             storage: "512GB SSD"
         },
         {
-            id: 15,
+            _id: 15,
             name: "Essential Oil Diffuser",
             category: "Home & Kitchen",
             price: 34.99,
@@ -155,8 +155,7 @@ const products = [
             color: "Wood Grain",
             capacity: "300ml"
         }
-    ]
-;
+    ];
 
 module.exports = [
     {
@@ -193,21 +192,21 @@ module.exports = [
     {
         id: 'product',
         method: 'GET',
-        url: '/api/product?:id',
+        url: '/api/product/:id',
         variants: [
             {
                 id: 'ok',
                 type: 'json',
                 options: {
                     status: 200,
-                    body: products[Math.round(Math.random() * (products.length - 1))]
+                    body: products[0]
                 }
             }
         ]
     },
     {
         id: 'search',
-        url: '/api/search?:query',
+        url: '/api/search/:query',
         method: 'GET',
         variants: [
             {
@@ -254,7 +253,7 @@ module.exports = [
     {
         id: 'edit',
         method: 'POST',
-        url: '/api/products?:id',
+        url: '/api/products/:id',
         variants: [
             {
                 id: 'ok',

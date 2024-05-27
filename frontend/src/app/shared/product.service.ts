@@ -15,11 +15,11 @@ export class ProductService {
   }
 
   get(id: string) {
-    return this.http.get<Product>(`${this.apiUrl}/product?id=${id}`)
+    return this.http.get<Product>(`${this.apiUrl}/product/${id}`)
   }
 
   search(q: string) {
-    return this.http.get<Product[]>(`${this.apiUrl}/search?query=${q}`)
+    return this.http.get<Product[]>(`${this.apiUrl}/search/${q}`)
   }
 
   create(p: NewProduct) {
@@ -27,6 +27,10 @@ export class ProductService {
   }
 
   edit(id: string, p: Product) {
-    return this.http.post<Product>(`${this.apiUrl}/products?id=${id}`, p)
+    return this.http.post<Product>(`${this.apiUrl}/products/${id}`, p)
+  }
+
+  delete(id: string) {
+    return this.http.delete<Product>(`${this.apiUrl}/products/${id}`)
   }
 }
