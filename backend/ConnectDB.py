@@ -45,6 +45,28 @@ class ConnectDB():
     def textQueryObject(self,queryText):
         db = self.server['demo']
 
+        searchWords = queryText.split(" ")
+        
+        print(searchWords)
+
+        querriedDocuments = []
+        
+        for word in searchWords:
+            documents = db.find({
+               "selector": {
+                  "name": {
+                     "$regex": "(?i).*" + word + ".*"
+                  }
+               }
+            })
+            print(documents)
+            for document in documents:
+                if (document not in querriedDocuments) and (document != None):
+                    querriedDocuments.append(document)
+
+        return querriedDocuments
+
+
     def deleteObject(self,id):
         db = self.server['demo']
         doc = db.get(id)

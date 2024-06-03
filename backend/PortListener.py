@@ -40,7 +40,7 @@ def getObjects():
 def getObjectOfId(id):
     return con.getObjects(id)[0]
 
-@app.route('/search?query=<query>', methods=["GET"])
+@app.route('/search/<query>', methods=["GET"])
 @cross_origin()
 # /search?query=<query> URL is bound with searchTextOfObjects() function
 def searchTextOfObjects(query):
