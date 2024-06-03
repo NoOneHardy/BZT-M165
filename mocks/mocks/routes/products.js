@@ -160,7 +160,7 @@ const products = [
 module.exports = [
     {
         id: 'products',
-        url: '/api/products',
+        url: '/products',
         method: 'GET',
         variants: [
             {
@@ -192,7 +192,7 @@ module.exports = [
     {
         id: 'product',
         method: 'GET',
-        url: '/api/product/:id',
+        url: '/product/:id',
         variants: [
             {
                 id: 'ok',
@@ -206,7 +206,7 @@ module.exports = [
     },
     {
         id: 'search',
-        url: '/api/search/:query',
+        url: '/search/:query',
         method: 'GET',
         variants: [
             {
@@ -238,7 +238,7 @@ module.exports = [
     {
         id: 'create',
         method: 'POST',
-        url: '/api/products',
+        url: '/products',
         variants: [
             {
                 id: 'ok',
@@ -253,7 +253,7 @@ module.exports = [
     {
         id: 'edit',
         method: 'POST',
-        url: '/api/products/:id',
+        url: '/products/:id',
         variants: [
             {
                 id: 'ok',

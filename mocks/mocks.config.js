@@ -55,7 +55,7 @@ module.exports = {
   },
   server: {
     // Port number for the server to be listening at
-    //port: 3100,
+    port: 12345,
     // Host for the server
     //host: "0.0.0.0",
     cors: {

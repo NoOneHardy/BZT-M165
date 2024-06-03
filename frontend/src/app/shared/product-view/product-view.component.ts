@@ -47,6 +47,11 @@ export class ProductViewComponent implements OnInit, OnDestroy {
   }
 
   search(value: string) {
+    if (value.trim() === '') {
+      this.productsService.getProducts().subscribe(this.productController.observer)
+      return
+    }
+
     this.searchValue = value
     this.productsService.search(value).subscribe(this.productController.observer)
   }
