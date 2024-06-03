@@ -19,12 +19,12 @@ export const routes: Routes = [
   {
     path: 'create',
     component: NewProductComponent,
-    // canActivate: [authGuard]
+    canActivate: [authGuard]
   },
   {
     path: 'edit',
     component: EditOverviewComponent,
-    // canActivate: [authGuard]
+    canActivate: [authGuard]
   },
   {
     path: 'edit/:id',
