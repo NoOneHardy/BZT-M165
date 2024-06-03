@@ -22,8 +22,7 @@ def createObject():
 @cross_origin()
 # ‘/products/<id>’ URL is bound with editObjectWithId() function
 def editObjectWithId(id):
-    con.updateObject(id,request.get_json())
-    return id
+    return con.updateObject(id,request.get_json())
 
 # The route() function of the Flask class is a decorator, 
 # which tells the application which URL should call 

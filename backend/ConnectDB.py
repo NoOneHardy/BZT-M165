@@ -42,12 +42,12 @@ class ConnectDB():
 
         db.save(data)
 
+        return db.get(id)
+
     def textQueryObject(self,queryText):
         db = self.server['demo']
 
         searchWords = queryText.split(" ")
-        
-        print(searchWords)
 
         querriedDocuments = []
         
@@ -59,7 +59,6 @@ class ConnectDB():
                   }
                }
             })
-            print(documents)
             for document in documents:
                 if (document not in querriedDocuments) and (document != None):
                     querriedDocuments.append(document)
