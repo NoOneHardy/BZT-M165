@@ -52,12 +52,21 @@ class ConnectDB():
         querriedDocuments = []
         
         for word in searchWords:
-            documents = db.find({
-               "selector": {
-                  "name": {
-                     "$regex": "(?i).*" + word + ".*"
-                  }
-               }
+            documents = db.find({  
+                "selector": {
+                    "$or": [
+                        {
+                            "name": {
+                                "$regex": "(?i).*" + word + ".*"
+                            },
+                        },
+                        {
+                            "category": {
+                                "$regex": "(?i).*" + word + ".*"
+                            }
+                        }
+                    ]
+                }
             })
             for document in documents:
                 if (document not in querriedDocuments) and (document != None):
