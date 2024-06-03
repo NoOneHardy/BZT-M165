@@ -26,10 +26,10 @@ export class SearchComponent implements OnInit {
     })
   }
 
-  onEnter(e: KeyboardEvent) {
+  onEnter(e: KeyboardEvent, value: string) {
     console.log(e.key)
     if (e.key === 'Enter') {
-        this.search.emit('')
+      this.search.emit(value.trim())
     }
   }
 }
