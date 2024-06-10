@@ -6,14 +6,25 @@ class ConnectDB():
         # Replace 'username' and 'password' with your CouchDB credentials
         username = 'admin'
         password = 'admin'
+
+        source_db = 'm165db'
+        replication_db = 'm165db_replication'
         
         # Connect to CouchDB server (replace 'localhost' and '5984' with your server details)
         self.server = couchdb.Server('http://localhost:5984')
         self.server.resource.credentials = (username, password)
-        if ("m165db" in self.server):
-            self.db = self.server['m165db']
+        if (source_db in self.server):
+            self.db = self.server[source_db]
         else:
-            self.db = self.server.create("m165db")
+            self.db = self.server.create(source_db)
+        if (replication_db in self.server):
+            pass
+        else:
+            replication_options = {
+                'create_target': True,  # Create the target database if it doesn't exist
+                'continuous': True      # Enable continuous replication
+            }
+            self.server.replicate(source_db,replication_db,**replication_options)
 
 
     def getObjects(self,id=None):
