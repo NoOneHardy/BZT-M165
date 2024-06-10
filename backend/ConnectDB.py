@@ -11,7 +11,7 @@ class ConnectDB():
         replication_db = 'm165db_replication'
         
         # Connect to CouchDB server (replace 'localhost' and '5984' with your server details)
-        self.server = couchdb.Server('http://localhost:5984')
+        self.server = couchdb.Server('http://m165-couchdb:5984')
         self.server.resource.credentials = (username, password)
         if (source_db in self.server):
             self.db = self.server[source_db]
