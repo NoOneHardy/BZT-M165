@@ -10,49 +10,50 @@ class ConnectDB():
         # Connect to CouchDB server (replace 'localhost' and '5984' with your server details)
         self.server = couchdb.Server('http://localhost:5984')
         self.server.resource.credentials = (username, password)
+        if ("m165db" in self.server):
+            self.db = self.server['m165db']
+        else:
+            self.db = self.server.create("m165db")
+
 
     def getObjects(self,id=None):
-        db = self.server['demo']
 
         Objects = []
 
-        for doc_id in db:
+        for doc_id in self.db:
             if(id==None):
-                Objects.append(db[doc_id])
+                Objects.append(self.db[doc_id])
             elif(id==doc_id):
-                Objects.append(db[doc_id])
+                Objects.append(self.db[doc_id])
         
         return Objects
     
     def createObject(self,data):
-        db = self.server['demo']
-
-        id,rev = db.save(data)
-        return db.get(id)
+        if(type(data['price']) in [int,float]):
+            id,rev = self.db.save(data)
+            return self.db.get(id)
+        else:
+            return {"Error":"Not a Number"}
     
 
     def updateObject(self,id,data):
-        db = self.server['demo']
+        doc = self.db.get(id)
 
-        doc = db.get(id)
-
-        db.delete(doc)
-
-        data["_id"] = id
-
-        db.save(data)
-
-        return db.get(id)
+        if(type(data['price']) in [int,float]):
+            self.db.delete(doc)
+            data["_id"] = id
+            self.db.save(data)
+            return self.db.get(id)
+        else:
+            return {"Error":"Not a Number"}
 
     def textQueryObject(self,queryText):
-        db = self.server['demo']
-
         searchWords = queryText.split(" ")
 
         querriedDocuments = []
         
         for word in searchWords:
-            documents = db.find({  
+            documents = self.db.find({  
                 "selector": {
                     "$or": [
                         {
@@ -76,9 +77,8 @@ class ConnectDB():
 
 
     def deleteObject(self,id):
-        db = self.server['demo']
-        doc = db.get(id)
-        db.delete(doc)
+        doc = self.db.get(id)
+        self.db.delete(doc)
         return doc
 
         
