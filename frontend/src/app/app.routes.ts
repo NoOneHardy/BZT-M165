@@ -29,7 +29,7 @@ export const routes: Routes = [
   {
     path: 'edit/:id',
     component: EditComponent,
-    // canActivate: [authGuard]
+    canActivate: [authGuard]
   },
   {
     path: 'view/:id',
