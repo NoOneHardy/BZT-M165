@@ -15,21 +15,31 @@ class ConnectDB():
         self.server = couchdb.Server('http://m165-couchdb:5984')
         # Dann werden beim CouchDB die Credentials angegeben
         self.server.resource.credentials = (username, password)
+        # _users Datenbank wird erstellt, falls sie noch nicht existiert
+        if ('_users' not in self.server):
+            self.server.create('_users')
+        # _replicator Datenbank wird erstellt, falls sie noch nicht existiert
+        if ('_replicator' not in self.server):
+            self.server.create('_replicator')
+        # _global_changes Datenbank wird erstellt, falls sie noch nicht existiert
+        if ('_global_changes' not in self.server):
+            self.server.create('_global_changes')
         # Es wird geprüft ob die Datenbank existiert, wenn nicht wird sie erstellt
         if (source_db in self.server):
             self.db = self.server[source_db]
         else:
             self.db = self.server.create(source_db)
-        # Hier wird geprüft ob die Replikation der Datenbank schon existiert, wenn nicht wird sie erstellt
-        if (replication_db in self.server):
-            pass
-        else:
+        # m165db_replication Datenbank wird erstellt, falls sie noch nicht existiert
+        if (replication_db not in self.server):
             # Hier werden die Argumente für die Replikation auf eine Variable geschrieben
-            replication_options = {
+            replication_doc = {
+                'source': "http://admin:admin@m165-couchdb:5984/" + source_db,
+                'target': "http://admin:admin@m165-couchdb:5984/" + replication_db,
                 'create_target': True,
                 'continuous': True
             }
-            self.server.replicate(source_db,replication_db,**replication_options)
+            self.server['_replicator'].save(replication_doc)
+            #self.server.replicate(source_db,replication_db,**replication_options)
 
     # Mit dieser Funktion werden alle Dokumente der Datenbank geholt, wenn eine ID mitgegeben wird, wird nur das Dokument mit der gleichen ID zurückgegeben
     def getObjects(self,id=None):
