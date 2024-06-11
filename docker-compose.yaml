@@ -8,6 +8,8 @@ services:
     ports:
       - 16500:80
   backend:
+    depends_on:
+      - couchdb
     restart: unless-stopped
     hostname: m165-backend
     container_name: m165-backend

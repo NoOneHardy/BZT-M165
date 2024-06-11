@@ -11,4 +11,5 @@ RUN pip install flask && pip install flask_cors
 RUN pip install gunicorn
 
 CMD gunicorn PortListener:app -b :12345
+#CMD python PortListener.py
 

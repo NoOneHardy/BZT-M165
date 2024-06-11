@@ -12,7 +12,7 @@ class ConnectDB():
         replication_db = 'm165db_replication'
 
         # Hier wird eine Verbindung zum CouchDB server erstellt
-        self.server = couchdb.Server('http://localhost:5984')
+        self.server = couchdb.Server('http://m165-couchdb:5984')
         # Dann werden beim CouchDB die Credentials angegeben
         self.server.resource.credentials = (username, password)
         # Es wird geprüft ob die Datenbank existiert, wenn nicht wird sie erstellt
@@ -26,8 +26,8 @@ class ConnectDB():
         else:
             # Hier werden die Argumente für die Replikation auf eine Variable geschrieben
             replication_options = {
-                'create_target': True, 
-                'continuous': True      
+                'create_target': True,
+                'continuous': True
             }
             self.server.replicate(source_db,replication_db,**replication_options)
 
@@ -76,7 +76,7 @@ class ConnectDB():
         querriedDocuments = []
         for word in searchWords:
             # Hier wird nun die Query ausgeführt
-            documents = self.db.find({  
+            documents = self.db.find({
                 "selector": {
                     "$or": [
                         {

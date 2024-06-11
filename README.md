@@ -1,23 +1,15 @@
 # BZT-M165
 
-## Endpoints
-
-* POST '/products' => Erstelltes Objekt
-* POST '/prodcuts/{id}' => Bearbeitetes Objekt
-* GET '/products' => Array mit allen Objekten
-* GET '/products/{id}' => Bestimmtes Objekt
-* GET '/search/{query}' => Suche nach Text
-* DELETE '/products/{id}' => Löschen eines bestimmten Objekts
-
 ## Start Project
 
-### Backend
+```shell
+docker compose up -d
+``` 
 
-CouchDB Username und Passwort in ./backend/ConnectDB.py:7-8 setzen.
+* Fauxton: http://localhost:16599/_utils
+* Webview: http://localhost:16500
+* Backend API: http://localhost:16501
 
-### Frontend
+### Screenshot Testdaten
 
-1. ```cd ./frontend```
-2. ```npm install```
-3. ```npm run start```
-4. http://localhost:4200 im Browser öffnen.
+
