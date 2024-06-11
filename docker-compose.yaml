@@ -1,0 +1,30 @@
+name: m165-hardegger-luethi
+services:
+  frontend:
+    restart: unless-stopped
+    hostname: m165-frontend
+    container_name: m165-frontend
+    build: ./frontend
+    ports:
+      - 16500:80
+  backend:
+    restart: unless-stopped
+    hostname: m165-backend
+    container_name: m165-backend
+    build: ./backend
+    ports:
+      - 16501:12345
+  couchdb:
+    restart: unless-stopped
+    hostname: m165-couchdb
+    container_name: m165-couchdb
+    image: couchdb
+    environment:
+      COUCHDB_USER: admin
+      COUCHDB_PASSWORD: admin
+    volumes:
+      - couchdb_data:/opt/couchdb/data
+    ports:
+      - 16599:5984
+volumes:
+  couchdb_data:

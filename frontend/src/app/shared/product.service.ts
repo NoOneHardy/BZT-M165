@@ -1,12 +1,13 @@
 import {inject, Injectable} from '@angular/core'
 import {HttpClient} from '@angular/common/http'
 import {NewProduct, Product} from './interfaces/product'
+import {environment} from '../../environments/environment'
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  private apiUrl = 'http://localhost:12345'
+  private apiUrl = environment.apiUrl
 
   private http = inject(HttpClient)
 
