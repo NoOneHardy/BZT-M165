@@ -30,3 +30,4 @@ services:
       - 16599:5984
 volumes:
   couchdb_data:
+    name: m165_couchdb_data

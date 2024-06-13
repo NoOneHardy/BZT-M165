@@ -19,7 +19,7 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
     this.input$.pipe(
       debounceTime(500),
-      filter(term => term.length >= 3),
+      filter(term => term.length >= 3 || term.length === 0),
       distinctUntilChanged()
     ).subscribe(value => {
       this.search.emit(value)
