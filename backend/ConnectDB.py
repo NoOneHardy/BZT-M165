@@ -39,20 +39,25 @@ class ConnectDB():
                 'continuous': True
             }
             self.server['_replicator'].save(replication_doc)
-            #self.server.replicate(source_db,replication_db,**replication_options)
 
+
+        # Indexes Objekt wird erstellt um indexe zu manipulieren
         index = self.db.index()
-        index.__setitem__(
-            {"ddocname", "index-namE"},
-            ['name', 'category']
-        )
+
+        # Es wird geprüft ob der Index schon erstellt wird
+        if ("_design/name_category" not in self.db):      
+            # Neuer Index wird in die DB eingetragen
+            index.__setitem__(
+                {"name_category", "name_category_index"},
+                ['name', 'category']
+            )
 
 
     # Mit dieser Funktion werden alle Dokumente der Datenbank geholt, wenn eine ID mitgegeben wird, wird nur das Dokument mit der gleichen ID zurückgegeben
     def getObjects(self,id=None):
         Objects = []
         for doc_id in self.db:
-            if(id==None):
+            if((id==None) and ("_design" not in doc_id)):
                 Objects.append(self.db[doc_id])
             elif(id==doc_id):
                 Objects.append(self.db[doc_id])
