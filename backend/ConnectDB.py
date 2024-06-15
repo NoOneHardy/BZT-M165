@@ -41,6 +41,13 @@ class ConnectDB():
             self.server['_replicator'].save(replication_doc)
             #self.server.replicate(source_db,replication_db,**replication_options)
 
+        index = self.db.index()
+        index.__setitem__(
+            {"ddocname", "index-namE"},
+            ['name', 'category']
+        )
+
+
     # Mit dieser Funktion werden alle Dokumente der Datenbank geholt, wenn eine ID mitgegeben wird, wird nur das Dokument mit der gleichen ID zurückgegeben
     def getObjects(self,id=None):
         Objects = []
